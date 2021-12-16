@@ -1,10 +1,57 @@
 
-document.getElementById("PlayGame").addEventListener("click", startGame);
+
+
+
+
+
+//temporarily disabled - starts game on click
+//document.getElementById("PlayGame").addEventListener("click", startGame);
+
+//make rock paper scissor buttons visible on click
+document.getElementById("PlayGame").addEventListener("click", buttonVis);
+
+function buttonVis() {
+    //test appending an element an existing node
+    const rock = document.createElement("button");
+    const node = document.createTextNode("Rock");
+    rock.appendChild(node);
+
+    //add paper button
+    const paper = document.createElement("button");
+    const node2 = document.createTextNode("Paper");
+    paper.appendChild(node2);
+
+    //add scissors button
+    const scissors = document.createElement("button");
+    const node3 = document.createTextNode("Paper");
+    scissors.appendChild(node3);
+
+
+    //This code finds an existing element:
+    const element = document.getElementById("GameInfo");
+
+    //This code appends the new element to the existing element:
+    element.appendChild(rock);
+    element.appendChild(paper);
+    element.appendChild(scissors);
+}
 
 function startGame() {
   
-  let winner = playRound();
-  summary(winner);
+  gameVisible();
+  elements.innerHTML = "test";
+
+  //let winner = playRound();
+  //summary(winner);
+}
+
+function gameVisible() {
+    let x = document.getElementById("GameInfo");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
 }
 
 //pick randomly between rock paper scissors

@@ -120,7 +120,18 @@ function playRound(userChoice){
     }
 
     if (userWins == 5){
-        alert("You Have beaten the Computer!")
+        alert("You have beaten the Computer!")
+        userWins = 0;
+        cpuWins = 0;
+        roundNumber = 0;
+        document.getElementById("UserScore").innerHTML = "";
+        document.getElementById("CPUScore").innerHTML = ""
+        document.getElementById("RoundNumber").innerHTML = "";
+        document.getElementById("GameResult").innerHTML = "";
+        document.getElementById("CPUChoice").innerHTML = "";
+    }
+    if (cpuWins == 5){
+        alert("The Computer has beaten you")
         userWins = 0;
         cpuWins = 0;
         roundNumber = 0;

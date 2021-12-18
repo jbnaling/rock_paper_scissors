@@ -3,18 +3,7 @@ let userWins = 0;
 let cpuWins = 0;
 let roundNumber = 0;
 
-
-//starts game on click
-//document.getElementById("PlayGame").addEventListener("click", startGame);
-
-//choose rock onclick and hold it as a variable
-//var userChoice = null;
-//document.getElementById("Rock").addEventListener("click", function () {
-//    userChoice = "rock";
-//    startGame()} );
-    
-
-
+//start the game when you click a button
 document.getElementById("Rock").addEventListener("click", chooseRock);
 document.getElementById("Paper").addEventListener("click", choosePaper);
 document.getElementById("Scissors").addEventListener("click", chooseScissors);
@@ -32,15 +21,6 @@ function choosePaper() {
 function chooseScissors() {
     let userChoice = "scissors";
     playRound(userChoice);
-}
-
-function gameVisible() {
-    let x = document.getElementById("GameInfo");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
 }
 
 //pick randomly between rock paper scissors
@@ -90,10 +70,7 @@ function compareUserVCpu(CPU, User){
 }
 
 function playRound(userChoice){
-    //disabled until i figure out how to scope this properly
-    //let score = 0;
     let cpuChoice = getCpu();
-    
     let roundWinner = compareUserVCpu(cpuChoice, userChoice);
     roundNumber++;
     document.getElementById("RoundNumber").innerHTML = "Round # "+ roundNumber;
@@ -104,14 +81,14 @@ function playRound(userChoice){
         userWins++;
         //display to UserScore element
         document.getElementById("GameResult").innerHTML = "You Win!";
-        document.getElementById("UserScore").innerHTML = "User Score " + userWins;
+        document.getElementById("UserScore").innerHTML = "User Score: " + userWins;
     }
 
     if (roundWinner == "CPUWin"){
         cpuWins++;
         //display to UserScore element
         document.getElementById("GameResult").innerHTML = "You Lose!";
-        document.getElementById("CPUScore").innerHTML = "CPU Score " + cpuWins;
+        document.getElementById("CPUScore").innerHTML = "CPU Score: " + cpuWins;
     }
 
     if (roundWinner == "TieGame"){
@@ -141,41 +118,6 @@ function playRound(userChoice){
         document.getElementById("GameResult").innerHTML = "";
         document.getElementById("CPUChoice").innerHTML = "";
     }
-
-
-    //alert("userChoice is " + userChoice);
-    //alert("cpuChoice is " + cpuChoice);
-
-    /* finds round winner and loops until finding winner
-    keepGoing=true;
-    do{
-        
-        let cpuChoice = getCpu();
-        rounds++;
-        
-
-        roundWinner = compareUserVCpu(cpuChoice, userChoice);
-
-        if (roundWinner == "UserWin"){
-            score++;
-            alert("You win this round! \nThe Cpu chose: " + cpuChoice + " \nYour score is: " + score);
-        }
-        else if (roundWinner == "CPUWin"){
-            score--;
-            alert("You lost this round! \nThe Cpu chose: " + cpuChoice + " \nYour score is: " + score);
-        }
-        else{
-            alert("You tied this round! \nThe Cpu chose: " + cpuChoice + " \nYour score is: " + score);
-        }
-
-        if (score == 5){
-            return "userWin";
-        }
-        if (score == -5){            
-            return "cpuWin";
-        }
-    } while (keepGoing)
-    */
 }
 
 

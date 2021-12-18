@@ -1,0 +1,85 @@
+
+/*stick footer */
+.HolyGrail {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    flex: 1;
+
+  }
+  
+  .HolyGrail-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .content{
+      display: flex;
+      flex-direction: column;
+      margin-top: 100px;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+  }
+
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    text-align: end;
+}
+
+.logoText{
+    
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+.GameButtons{
+    display: flex;
+    gap: 60px;
+}
+
+.gameBtn {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 300px
+}
+
+.gameBtn:hover {
+    /*border: 20px solid #ddd;*/
+    border: 0;
+    transform: rotate(45deg);
+  }
+
+
+.logo {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+}
+
+.Results {
+  display: flex;
+  gap: 100px;
+  
+}
+
+/*.Results div{
+  border: 1px solid #ddd;
+}*/
+
+.Results div div{
+  border: 1px solid #ddd;
+}

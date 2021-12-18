@@ -1,48 +1,37 @@
+//global variables
+let userWins = 0;
+let cpuWins = 0;
+let roundNumber = 0;
 
 
-
-
-
-
-//temporarily disabled - starts game on click
+//starts game on click
 //document.getElementById("PlayGame").addEventListener("click", startGame);
 
-//make rock paper scissor buttons visible on click
-document.getElementById("PlayGame").addEventListener("click", buttonVis);
-
-function buttonVis() {
-    //test appending an element an existing node
-    const rock = document.createElement("button");
-    const node = document.createTextNode("Rock");
-    rock.appendChild(node);
-
-    //add paper button
-    const paper = document.createElement("button");
-    const node2 = document.createTextNode("Paper");
-    paper.appendChild(node2);
-
-    //add scissors button
-    const scissors = document.createElement("button");
-    const node3 = document.createTextNode("Paper");
-    scissors.appendChild(node3);
+//choose rock onclick and hold it as a variable
+//var userChoice = null;
+//document.getElementById("Rock").addEventListener("click", function () {
+//    userChoice = "rock";
+//    startGame()} );
+    
 
 
-    //This code finds an existing element:
-    const element = document.getElementById("GameInfo");
+document.getElementById("Rock").addEventListener("click", chooseRock);
+document.getElementById("Paper").addEventListener("click", choosePaper);
+document.getElementById("Scissors").addEventListener("click", chooseScissors);
 
-    //This code appends the new element to the existing element:
-    element.appendChild(rock);
-    element.appendChild(paper);
-    element.appendChild(scissors);
+function chooseRock() {
+    let userChoice = "rock";
+    playRound(userChoice);
 }
 
-function startGame() {
-  
-  gameVisible();
-  elements.innerHTML = "test";
+function choosePaper() {
+    let userChoice = "paper";
+    playRound(userChoice);
+}
 
-  //let winner = playRound();
-  //summary(winner);
+function chooseScissors() {
+    let userChoice = "scissors";
+    playRound(userChoice);
 }
 
 function gameVisible() {
@@ -59,22 +48,26 @@ function getCpu(){
     //generate number 0-2
     let cpuChoice = Math.floor(Math.random() * 3);
     
-    //return cpuChoice;
+    //return cpuChoice and display to screen;
     if (cpuChoice == 0){
+        document.getElementById("CPUChoice").innerHTML = "The CPU chose rock";
         return "rock";
     }
     else if (cpuChoice == 1){
+        document.getElementById("CPUChoice").innerHTML = "The CPU chose paper";
         return "paper";
     }
     else {
+        document.getElementById("CPUChoice").innerHTML = "The CPU chose scissors";
         return "scissors";
     }
 }
 
 function compareUserVCpu(CPU, User){
     if (CPU == "rock") {
-        if (User == "scissors")
+        if (User == "scissors"){
             return "CPUWin";
+        }
         else if (User == "paper")
             return "UserWin";
     }
@@ -92,21 +85,64 @@ function compareUserVCpu(CPU, User){
         else if (User == "rock")
             return "UserWin";
     }
+
+    return "TieGame";
 }
 
-function playRound(){
-    let roundWinner;
-    let score = 0;
-    let rounds = 0;
+function playRound(userChoice){
+    //disabled until i figure out how to scope this properly
+    //let score = 0;
+    let cpuChoice = getCpu();
     
+    let roundWinner = compareUserVCpu(cpuChoice, userChoice);
+    roundNumber++;
+    document.getElementById("RoundNumber").innerHTML = "Round # "+ roundNumber;
+
+    //display rounder winner 
+    //if round winner is userWin, userwin++
+    if (roundWinner == "UserWin"){
+        userWins++;
+        //display to UserScore element
+        document.getElementById("GameResult").innerHTML = "You Win!";
+        document.getElementById("UserScore").innerHTML = "User Score " + userWins;
+    }
+
+    if (roundWinner == "CPUWin"){
+        cpuWins++;
+        //display to UserScore element
+        document.getElementById("GameResult").innerHTML = "You Lose!";
+        document.getElementById("CPUScore").innerHTML = "CPU Score " + cpuWins;
+    }
+
+    if (roundWinner == "TieGame"){
+        //display to UserScore element
+        document.getElementById("GameResult").innerHTML = "Tie Game";
+    }
+
+    if (userWins == 5){
+        alert("You Have beaten the Computer!")
+        userWins = 0;
+        cpuWins = 0;
+        roundNumber = 0;
+        document.getElementById("UserScore").innerHTML = "";
+        document.getElementById("CPUScore").innerHTML = ""
+        document.getElementById("RoundNumber").innerHTML = "";
+        document.getElementById("GameResult").innerHTML = "";
+        document.getElementById("CPUChoice").innerHTML = "";
+    }
+
+
+    //alert("userChoice is " + userChoice);
+    //alert("cpuChoice is " + cpuChoice);
+
+    /* finds round winner and loops until finding winner
     keepGoing=true;
     do{
-        let userChoice = window.prompt("Enter rock, paper, scissors");
+        
         let cpuChoice = getCpu();
         rounds++;
+        
 
-        //temporarily hardcode cpuChoice;
-        //cpuChoice = "rock";
         roundWinner = compareUserVCpu(cpuChoice, userChoice);
 
         if (roundWinner == "UserWin"){
@@ -121,23 +157,17 @@ function playRound(){
             alert("You tied this round! \nThe Cpu chose: " + cpuChoice + " \nYour score is: " + score);
         }
 
-        if (rounds==5){
-            if (score>0){
-                return "userWin";
-            }
-            else {
-                return "cpuWin"
-            }
-        }
-
-        if (score == 3){
+        if (score == 5){
             return "userWin";
         }
-        if (score == -3){            
+        if (score == -5){            
             return "cpuWin";
         }
     } while (keepGoing)
+    */
 }
+
+
 
 function summary (winner){
     if (winner == "userWin"){

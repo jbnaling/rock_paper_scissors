@@ -1,11 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rps.css">
     <title>Rock Paper Scissors</title>
 </head>
+
+<!-- 
 <body>
     
     <button id="PlayGame">Start New Game</button>  
@@ -16,8 +20,45 @@
         <script src="rockPaperScissors.js">  </script>
     </div>
     
-    
-
-    
 </body>
+
+-->
+
+
+<body class="HolyGrail">
+    <header>
+        <img class="logo" src="images/fingers-149295.png" alt="Rock Paper Scissors Logo">
+        <div class="logoText">Rock Paper Scissors Shoot!</div>
+    </header>
+    
+    
+    <div class="HolyGrail-body">
+        <div class="content">
+            <div>First to 5!</div>
+            <div id="CPUChoice"></div>
+            <div id="GameResult"></div>
+            <div class="GameButtons">
+                <img id="Rock" class="gameBtn" src="images/rock-paper-scissors-296854.png" alt="Rock Paper Scissors Logo">
+                <img id="Paper" class="gameBtn" src="images/rock-paper-scissors-296855.png" alt="Rock Paper Scissors Logo">
+                <img id="Scissors" class="gameBtn" src="images/rock-paper-scissors-296853.png" alt="Scissors">
+            </div>
+            
+            <div class="Results">
+                <div>
+                    <div id="RoundNumber"></div>
+                </div>
+                <div>
+                    <div id="UserScore"> </div>
+                    <div id="CPUScore"> </div>
+                </div>
+            </div>
+        </div>
+      </main>
+    </div>
+    <footer>By Justin Naling - 2021</footer>  
+
+    <script src="rockPaperScissors.js">  </script>
+  </body>
+
+
 </html>

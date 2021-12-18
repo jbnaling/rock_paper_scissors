@@ -19,8 +19,6 @@ document.write("write test");
 console.log("test")
 
 window.addEventListener('load', (event) => {
-    
-    
     document.getElementById("demo").style.visibility = "hidden";
 });
 

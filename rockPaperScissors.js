@@ -3,15 +3,40 @@ let userWins = 0;
 let cpuWins = 0;
 let roundNumber = 0;
 
-//start the game when you click a button
-document.getElementById("Rock").addEventListener("click", chooseRock);
-document.getElementById("Paper").addEventListener("click", choosePaper);
-document.getElementById("Scissors").addEventListener("click", chooseScissors);
+/*
+chooseRock = () => {
+    let userChoice = "rock";
+    playRound(userChoice);
+};
+*/
 
+//start the game when you click a button
+document.getElementById("Rock").addEventListener("click", chooseRock = () => {
+    let userChoice = "rock";
+    playRound(userChoice);
+});
+
+document.getElementById("Paper").addEventListener("click", () =>{
+    let userChoice = "paper";
+    playRound(userChoice);
+});
+
+document.getElementById("Scissors").addEventListener("click", () => {
+    let userChoice = "scissors";
+    playRound(userChoice);
+});
+
+//document.getElementById("Paper").addEventListener("click", choosePaper);
+//document.getElementById("Scissors").addEventListener("click", chooseScissors);
+
+
+
+/*
 function chooseRock() {
     let userChoice = "rock";
     playRound(userChoice);
 }
+*/
 
 function choosePaper() {
     let userChoice = "paper";
@@ -75,6 +100,7 @@ function playRound(userChoice){
     roundNumber++;
     document.getElementById("RoundNumber").innerHTML = "Round # "+ roundNumber;
 
+
     //display rounder winner 
     //if round winner is userWin, userwin++
     if (roundWinner == "UserWin"){
@@ -96,38 +122,38 @@ function playRound(userChoice){
         document.getElementById("GameResult").innerHTML = "Tie Game";
     }
 
+    //run summary if someone wins 
     if (userWins == 5){
-        alert("You have beaten the Computer!")
-        userWins = 0;
-        cpuWins = 0;
-        roundNumber = 0;
-        document.getElementById("UserScore").innerHTML = "";
-        document.getElementById("CPUScore").innerHTML = ""
-        document.getElementById("RoundNumber").innerHTML = "";
-        document.getElementById("GameResult").innerHTML = "";
-        document.getElementById("CPUChoice").innerHTML = "";
+        showSummary(userWins);
     }
+    
     if (cpuWins == 5){
-        alert("The Computer has beaten you")
-        userWins = 0;
-        cpuWins = 0;
-        roundNumber = 0;
-        document.getElementById("UserScore").innerHTML = "";
-        document.getElementById("CPUScore").innerHTML = ""
-        document.getElementById("RoundNumber").innerHTML = "";
-        document.getElementById("GameResult").innerHTML = "";
-        document.getElementById("CPUChoice").innerHTML = "";
+        showSummary(cpuWins);
     }
+    
 }
 
 
+function showRoundInfo(){
 
-function summary (winner){
+}
+
+
+function showSummary (winner){
     if (winner == "userWin"){
         alert("You Win!");
     }
     else{
         alert("You lose!")
     }
+
+        userWins = 0;
+        cpuWins = 0;
+        roundNumber = 0;
+        document.getElementById("UserScore").innerHTML = "";
+        document.getElementById("CPUScore").innerHTML = ""
+        document.getElementById("RoundNumber").innerHTML = "";
+        document.getElementById("GameResult").innerHTML = "";
+        document.getElementById("CPUChoice").innerHTML = "";
 
 }

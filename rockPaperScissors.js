@@ -1,14 +1,9 @@
-//global variables
+//this is the forked version of the repo
+//global variables 
 let userWins = 0;
 let cpuWins = 0;
 let roundNumber = 0;
 
-/*
-chooseRock = () => {
-    let userChoice = "rock";
-    playRound(userChoice);
-};
-*/
 
 //start the game when you click a button
 document.getElementById("Rock").addEventListener("click", chooseRock = () => {
@@ -25,28 +20,6 @@ document.getElementById("Scissors").addEventListener("click", () => {
     let userChoice = "scissors";
     playRound(userChoice);
 });
-
-//document.getElementById("Paper").addEventListener("click", choosePaper);
-//document.getElementById("Scissors").addEventListener("click", chooseScissors);
-
-
-
-/*
-function chooseRock() {
-    let userChoice = "rock";
-    playRound(userChoice);
-}
-*/
-
-function choosePaper() {
-    let userChoice = "paper";
-    playRound(userChoice);
-}
-
-function chooseScissors() {
-    let userChoice = "scissors";
-    playRound(userChoice);
-}
 
 //pick randomly between rock paper scissors
 function getCpu(){
@@ -103,6 +76,8 @@ function playRound(userChoice){
 
     //display rounder winner 
     //if round winner is userWin, userwin++
+
+
     if (roundWinner == "UserWin"){
         userWins++;
         //display to UserScore element

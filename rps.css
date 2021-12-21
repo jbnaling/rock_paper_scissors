@@ -47,12 +47,12 @@ header {
     padding: 5px;
     width: 300px
 }
-
+/*
 .gameBtn:hover {
     border: 0;
     transform: rotate(45deg);
   }
-
+*/
 
 .logo {
     border: 1px solid #ddd;

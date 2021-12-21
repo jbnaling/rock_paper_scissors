@@ -3,23 +3,53 @@
 let userWins = 0;
 let cpuWins = 0;
 let roundNumber = 0;
+const btnRock = document.getElementById("Rock");
+const btnPaper = document.getElementById("Paper");
+const btnScissors = document.getElementById("Scissors");
 
 
-//start the game when you click a button
-document.getElementById("Rock").addEventListener("click", chooseRock = () => {
+btnRock.addEventListener("click", (e) => {
     let userChoice = "rock";
     playRound(userChoice);
 });
 
-document.getElementById("Paper").addEventListener("click", () =>{
+
+btnPaper.addEventListener("click", () => {
     let userChoice = "paper";
     playRound(userChoice);
 });
 
-document.getElementById("Scissors").addEventListener("click", () => {
+btnScissors.addEventListener("click", () => {
     let userChoice = "scissors";
     playRound(userChoice);
 });
+
+btnRock.addEventListener("mouseover", (e) => {
+    e.target.style.border = "thick solid red";
+});
+
+btnPaper.addEventListener("mouseover", (e) => {
+    e.target.style.border = "thick solid red";
+});
+
+btnScissors.addEventListener("mouseover", (e) => {
+    e.target.style.border = "thick solid red";
+});
+
+
+btnRock.addEventListener("mouseout", (e) => {
+    e.target.style.border = "1px solid #ddd";
+});
+
+btnPaper.addEventListener("mouseout", (e) => {
+    e.target.style.border = "1px solid #ddd";
+});
+
+btnScissors.addEventListener("mouseout", (e) => {
+    e.target.style.border = "1px solid #ddd";
+});
+
+
 
 //pick randomly between rock paper scissors
 function getCpu(){

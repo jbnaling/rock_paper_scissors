@@ -8,6 +8,9 @@ const btnPaper = document.getElementById("Paper");
 const btnScissors = document.getElementById("Scissors");
 
 
+
+
+
 btnRock.addEventListener("click", (e) => {
     let userChoice = "rock";
     playRound(userChoice);

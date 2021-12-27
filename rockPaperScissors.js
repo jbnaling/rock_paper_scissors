@@ -25,9 +25,6 @@ btnRock.addEventListener("click", playRock = (e) => {
 
 
 document.addEventListener('keydown', event => {
-    console.log('key: ' + event.key);
-    console.log('code: ' + event.code);
-
     //if its the R fire rock btn event
     if (event.code=="KeyR"){
         highlightRock();
@@ -48,16 +45,24 @@ document.addEventListener('keydown', event => {
 
 //create events
 function highlightRock () {
-    btnRock.style.border = "thick solid red";
+    //clear border style if applied previously
+    removeBorder();
+    btnRock.style.border = "thick solid red";    
 }
 function highlightPaper () {
+    removeBorder();
     btnPaper.style.border = "thick solid red";
 }
 function highlightScissors () {
+    removeBorder();
     btnScissors.style.border = "thick solid red";
 }
 
-
+function removeBorder (){
+btnRock.style.border="1px solid #ddd";
+btnPaper.style.border="1px solid #ddd";
+btnScissors.style.border="1px solid #ddd";
+}
 
 btnPaper.addEventListener("click", playPaper = () => {
     document.getElementById("UserChoice").innerHTML = "You chose Paper";
@@ -150,16 +155,8 @@ function playRound(userChoice){
     roundNumber++;
     document.getElementById("RoundNumber").innerHTML = "Round # "+ roundNumber;
 
-
-
-    btnRock.style.border = "1px solid #ddd";
-    btnPaper.style.border = "1px solid #ddd";
-    btnScissors.style.border = "1px solid #ddd";
-
     //display rounder winner 
     //if round winner is userWin, userwin++
-
-
     if (roundWinner == "UserWin"){
         userWins++;
         //display to UserScore element

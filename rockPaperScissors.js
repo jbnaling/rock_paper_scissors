@@ -17,18 +17,56 @@ gameButtons.forEach(
       console.log(currentValue + ', ' + currentIndex + ', ' + this);
     });
 
-btnRock.addEventListener("click", (e) => {
+btnRock.addEventListener("click", playRock = (e) => {
+    document.getElementById("UserChoice").innerHTML = "You chose Rock";
     let userChoice = "rock";
     playRound(userChoice);
 });
 
 
-btnPaper.addEventListener("click", () => {
+document.addEventListener('keydown', event => {
+    console.log('key: ' + event.key);
+    console.log('code: ' + event.code);
+
+    //if its the R fire rock btn event
+    if (event.code=="KeyR"){
+        highlightRock();
+        playRock();
+    }
+
+    if (event.code=="KeyP"){
+        highlightPaper();
+        playPaper();
+    }
+
+    if (event.code=="KeyS"){
+        highlightScissors();
+        playScissors();
+    }
+});
+
+
+//create events
+function highlightRock () {
+    btnRock.style.border = "thick solid red";
+}
+function highlightPaper () {
+    btnPaper.style.border = "thick solid red";
+}
+function highlightScissors () {
+    btnScissors.style.border = "thick solid red";
+}
+
+
+
+btnPaper.addEventListener("click", playPaper = () => {
+    document.getElementById("UserChoice").innerHTML = "You chose Paper";
     let userChoice = "paper";
     playRound(userChoice);
 });
 
-btnScissors.addEventListener("click", () => {
+btnScissors.addEventListener("click", playScissors = () => {
+    document.getElementById("UserChoice").innerHTML = "You chose Scissors";
     let userChoice = "scissors";
     playRound(userChoice);
 });
@@ -113,6 +151,11 @@ function playRound(userChoice){
     document.getElementById("RoundNumber").innerHTML = "Round # "+ roundNumber;
 
 
+
+    btnRock.style.border = "1px solid #ddd";
+    btnPaper.style.border = "1px solid #ddd";
+    btnScissors.style.border = "1px solid #ddd";
+
     //display rounder winner 
     //if round winner is userWin, userwin++
 
@@ -136,6 +179,7 @@ function playRound(userChoice){
         document.getElementById("GameResult").innerHTML = "Tie Game";
     }
 
+
     //run summary if someone wins 
     if (userWins == 5){
         showSummary(userWins);
@@ -146,12 +190,6 @@ function playRound(userChoice){
     }
     
 }
-
-
-function showRoundInfo(){
-
-}
-
 
 function showSummary (winner){
     if (winner == "userWin"){
@@ -169,6 +207,7 @@ function showSummary (winner){
         document.getElementById("RoundNumber").innerHTML = "";
         document.getElementById("GameResult").innerHTML = "";
         document.getElementById("CPUChoice").innerHTML = "";
+        document.getElementById("UserChoice").innerHTML = "";
 }
 
 

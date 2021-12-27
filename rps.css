@@ -41,6 +41,14 @@ header {
     gap: 60px;
 }
 
+/*text of gamebuttons are centered*/
+/* siblings of rps ID are centered*/
+img + p {
+  font-weight: bold;
+  text-align: center;
+}
+
+
 .gameBtn {
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -76,4 +84,13 @@ footer {
 
 .Results div div{
   border: 1px solid #ddd;
+}
+
+.GameLetters {
+  display: flex;
+}
+
+.choiceDisplay {
+  display: flex;
+  gap: 50px;
 }

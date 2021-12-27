@@ -1,4 +1,4 @@
-//this is the forked version of the repo
+//this is the forked version of the repo 12-27
 //global variables 
 let userWins = 0;
 let cpuWins = 0;
@@ -8,8 +8,14 @@ const btnPaper = document.getElementById("Paper");
 const btnScissors = document.getElementById("Scissors");
 
 
+//create nodelist of buttons and put them into game buttons
+const gameButtons = document.querySelectorAll(".gameBtn");
+console.log(gameButtons.item[0]);
 
-
+gameButtons.forEach(
+    function(currentValue, currentIndex, listObj) {
+      console.log(currentValue + ', ' + currentIndex + ', ' + this);
+    });
 
 btnRock.addEventListener("click", (e) => {
     let userChoice = "rock";
@@ -163,5 +169,7 @@ function showSummary (winner){
         document.getElementById("RoundNumber").innerHTML = "";
         document.getElementById("GameResult").innerHTML = "";
         document.getElementById("CPUChoice").innerHTML = "";
-
 }
+
+
+

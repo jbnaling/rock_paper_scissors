@@ -25,6 +25,12 @@ btnRock.addEventListener("click", playRock = (e) => {
 
 
 document.addEventListener('keydown', event => {
+
+    //if modal is open close the modal 
+    if (modal.style.display == "block"){
+        modal.style.display = "none";
+    }
+
     //if its the R fire rock btn event
     if (event.code=="KeyR"){
         highlightRock();
@@ -190,12 +196,15 @@ function playRound(userChoice){
 
 function showSummary (winner){
     if (winner == "userWin"){
-        alert("You Win!");
+        document.getElementById("seriesResult").innerHTML="You have won the series against the CPU: " + userWins + " to " + cpuWins;
     }
     else{
-        alert("You lose!")
+        document.getElementById("seriesResult").textContent="You lost this series to the CPU: " + userWins + " to " + cpuWins;
     }
 
+    modal.style.display = "block";
+
+    //reset the game scores
         userWins = 0;
         cpuWins = 0;
         roundNumber = 0;
@@ -205,7 +214,34 @@ function showSummary (winner){
         document.getElementById("GameResult").innerHTML = "";
         document.getElementById("CPUChoice").innerHTML = "";
         document.getElementById("UserChoice").innerHTML = "";
+        btnRock.style.border = "1px solid #ddd";
+        btnPaper.style.border = "1px solid #ddd";
+        btnScissors.style.border = "1px solid #ddd";
+
+
 }
 
 
 
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+ 
+    
+    // Get the <span> element that closes the modal
+    var btnClose = document.getElementById("close");
+    
+
+    
+    // When the user clicks on <span> (x), close the modal
+    btnClose.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
